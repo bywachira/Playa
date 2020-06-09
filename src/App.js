@@ -1,26 +1,24 @@
-import React from "react";
-import "./App.css";
-
-const socket = require("socket.io-client")("http://localhost:4000");
+import React from 'react';
+import logo from './logo.svg';
+import './App.css';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>
+          Edit <code>src/App.js</code> and save to reload.
+        </p>
         <a
           className="App-link"
           href="https://reactjs.org"
           target="_blank"
           rel="noopener noreferrer"
         >
-          React:Socket:Push Notification
+          Learn React
         </a>
       </header>
-      <h2>Make a GET rquest to</h2>
-      <a href="http://localhost:4000/send-notification" target="_blank">
-        http://localhost:4000/send-notification
-      </a>
-      <h2>to test PUSH notification.</h2>
     </div>
   );
 }
