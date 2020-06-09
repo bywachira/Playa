@@ -1,10 +1,12 @@
 {
-  "name": "server",
+  "name": "playa-api",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon --exec babel-node src/index.js",
+    "start": "babel-node src/index.js"
   },
   "keywords": [],
   "author": "",
@@ -15,5 +17,10 @@
     "express": "^4.17.1",
     "socket.io": "^2.2.0",
     "web-push": "^3.3.5"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.10.2",
+    "@babel/node": "^7.10.1",
+    "@babel/preset-env": "^7.10.2"
   }
 }

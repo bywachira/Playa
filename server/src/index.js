@@ -17,12 +17,12 @@ const dummyDb = { subscription: null }; //dummy in memory store
 /* web push */
 const vapidKeys = {
   publicKey:
-    "BLHxWiNVmr7ROB8O3KpPRJFAMhMypwe4X9TdWMmhsPSzHszo32PDkndpvWx3H0OY2HwFCQRU98JBpZ_AEsVxWG4",
-  privateKey: "VXcSZD3mdKyXEmDZNrB02WTxgUZmdIpAEo5tnXR4OH4"
+    "BBPdMcwzra7yNCpIMpGGpvbHP7v1ZYvfnA87AsIUO5x3E5qdRpkXNDs-w2LuJsUqbcwcjFHBxG2Sc7ZbkC9iv7E",
+  privateKey: "Q5MQiy-M65komV6jPi-L_bjMLeRQx4Xa8KIhnwW26zA"
 };
 //setting our previously generated VAPID keys
 webpush.setVapidDetails(
-  "mailto:coachingmonk@email.com",
+  "mailto:email@bywachira.com",
   vapidKeys.publicKey,
   vapidKeys.privateKey
 );

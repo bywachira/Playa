@@ -43,7 +43,7 @@ self.addEventListener("activate", async () => {
 
   try {
     const applicationServerKey = urlB64ToUint8Array(
-      "BLHxWiNVmr7ROB8O3KpPRJFAMhMypwe4X9TdWMmhsPSzHszo32PDkndpvWx3H0OY2HwFCQRU98JBpZ_AEsVxWG4"
+      "BBPdMcwzra7yNCpIMpGGpvbHP7v1ZYvfnA87AsIUO5x3E5qdRpkXNDs-w2LuJsUqbcwcjFHBxG2Sc7ZbkC9iv7E"
     );
 
     const options = { applicationServerKey, userVisibleOnly: true };
