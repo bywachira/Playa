@@ -2,12 +2,13 @@ importScripts("https://www.gstatic.com/firebasejs/5.9.4/firebase-app.js");
 importScripts("https://www.gstatic.com/firebasejs/5.9.4/firebase-messaging.js");
 
 firebase.initializeApp({
-  messagingSenderId: "1062407524656"
+  messagingSenderId: "328220360109"
 });
 
 const messaging = firebase.messaging();
 
 messaging.setBackgroundMessageHandler(function(payload) {
+  console.log(payload)
   const promiseChain = clients
     .matchAll({
       type: "window",
@@ -20,7 +21,7 @@ messaging.setBackgroundMessageHandler(function(payload) {
       }
     })
     .then(() => {
-      return registration.showNotification("my notification title");
+      // return registration.showNotification("my notification title");
     });
   return promiseChain;
 });

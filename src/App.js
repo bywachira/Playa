@@ -4,14 +4,44 @@ import { compose, lifecycle, withHandlers, withState } from "recompose";
 
 const renderNotification = (notification, i) => <li key={i}>{notification}</li>;
 
-const registerPushListener = pushNotification =>
-  navigator.serviceWorker.addEventListener("message", ({ data }) =>
+const registerPushListener = (pushNotification) =>
+  navigator.serviceWorker.addEventListener("message", ({ data }) => {
     pushNotification(
       data.data
-        ? data.data.message
+        ? displayNotification(data.data.message)
         : data["firebase-messaging-msg-data"].data.message
-    )
-  );
+    );
+  });
+
+const displayNotification = (message) => {
+  if (Notification.permission === "granted") {
+    navigator.serviceWorker.getRegistration().then((reg) => {
+      const options = {
+        body: message,
+        icon:
+          "https://res.cloudinary.com/duoxba7n1/image/upload/v1591818231/playalogo.png",
+        vibrate: [100, 50, 100],
+        data: {
+          dateOfArrival: Date.now(),
+          primaryKey: 1,
+        },
+        actions: [
+          {
+            action: "explore",
+            title: "Explore this new world",
+            icon: "images/checkmark.png",
+          },
+          {
+            action: "close",
+            title: "Close notification",
+            icon: "images/xmark.png",
+          },
+        ],
+      };
+      return reg.showNotification("Playa", options);
+    });
+  }
+};
 
 const App = ({ token, notifications }) => (
   <>
@@ -30,11 +60,9 @@ export default compose(
   withState("token", "setToken", ""),
   withState("notifications", "setNotifications", []),
   withHandlers({
-    pushNotification: ({
-      setNotifications,
-      notifications
-    }) => newNotification =>
-      setNotifications(notifications.concat(newNotification))
+    pushNotification: ({ setNotifications, notifications }) => (
+      newNotification
+    ) => setNotifications(notifications.concat(newNotification)),
   }),
   lifecycle({
     async componentDidMount() {
@@ -42,15 +70,15 @@ export default compose(
 
       messaging
         .requestPermission()
-        .then(async function() {
+        .then(async function () {
           const token = await messaging.getToken();
           setToken(token);
         })
-        .catch(function(err) {
+        .catch(function (err) {
           console.log("Unable to get permission to notify.", err);
         });
 
       registerPushListener(pushNotification);
-    }
+    },
   })
 )(App);

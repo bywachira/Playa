@@ -2,13 +2,13 @@ import * as firebase from "firebase/app";
 import "firebase/messaging";
 
 const initializedFirebaseApp = firebase.initializeApp({
-  messagingSenderId: "1062881024656"
+  messagingSenderId: "328220360109"
 });
 
 const messaging = initializedFirebaseApp.messaging();
 
 messaging.usePublicVapidKey(
-  "BD6n7ebJq...rP-ytiqlsj4AcNNeQcbes"
+  "BDRBIdzvf3gWY-755FmCGXDwSzgyPOOSINZVo8w2JwMoQy5FrKkpMzOb_jfBih_4rg3DwDZRVRJ6k1cBpGWvNtI"
 );
 
-export { messaging };
+export { messaging, initializedFirebaseApp };
